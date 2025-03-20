@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mi-pod
+  labels:
+    mi-clave: mi-valor
+spec:
+  containers:
+  - name: mi-contenedor
+    image: nginx
+    ports:
+    - containerPort: 80
+  restartPolicy: Always

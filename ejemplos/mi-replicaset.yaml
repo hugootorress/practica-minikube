@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mi-replicaset
+spec:
+  # Número de réplicas que queremos tener en ejecución
+  replicas: 2
+  # Selecciona todos los Pods que tengan la etiqueta 'app: mi-app'
+  selector:
+    matchLabels:
+      app: mi-app
+  # Define la plantilla del pod que se utilizará para crear las réplicas
+  template:
+    metadata:
+      # Añade la etiqueta 'app: mi-app' al pod para que coincida con el selector
+      labels:
+        app: mi-app
+    spec:
+      containers:
+      - name: mi-contenedor
+        image: nginx
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
